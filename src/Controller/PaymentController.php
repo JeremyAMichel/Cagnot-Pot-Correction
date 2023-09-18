@@ -39,7 +39,6 @@ class PaymentController extends AbstractController
             return $this->redirectToRoute('app_campaign_show', ['id' => $campaign->getId()], Response::HTTP_SEE_OTHER);
         }
 
-
         return $this->render('campaign/payment.html.twig', [
             'campaign' => $campaign,
             'formPayment' => $formPayment

@@ -4,7 +4,10 @@ namespace App\Form;
 
 use App\Entity\Payment;
 use Symfony\Component\Form\AbstractType;
+<<<<<<< HEAD
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+=======
+>>>>>>> 2c55b8da18e5b93ac4fd1aaf1533b23478618220
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;

@@ -32,8 +32,6 @@ class Campaign
     #[ORM\Column]
     private ?int $goal = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'campaign', targetEntity: Participant::class, orphanRemoval: true)]
     private Collection $participants;
@@ -107,18 +105,6 @@ class Campaign
     public function setGoal(int $goal): static
     {
         $this->goal = $goal;
-
-        return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): static
-    {
-        $this->name = $name;
 
         return $this;
     }

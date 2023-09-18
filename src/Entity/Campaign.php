@@ -6,6 +6,7 @@ use App\Repository\CampaignRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CampaignRepository::class)]
@@ -36,6 +37,9 @@ class Campaign
 
     #[ORM\OneToMany(mappedBy: 'campaign', targetEntity: Participant::class, orphanRemoval: true)]
     private Collection $participants;
+
+    #[ORM\Column]
+    private ?int $totalCollected = null;
 
     public function __construct()
     {
@@ -145,6 +149,27 @@ class Campaign
                 $participant->setCampaign(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSumPayment(EntityManagerInterface $entityManager)
+    {
+
+        /// A finir
+        $campaignRepo = $entityManager->getRepository(Campaign::class);
+
+        return $campaignRepo->getTotalPaymentForOneCampaign($this);
+    }
+
+    public function getTotalCollected(): ?int
+    {
+        return $this->totalCollected;
+    }
+
+    public function setTotalCollected(int $totalCollected): static
+    {
+        $this->totalCollected = $totalCollected;
 
         return $this;
     }

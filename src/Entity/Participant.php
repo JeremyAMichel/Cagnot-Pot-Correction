@@ -28,6 +28,9 @@ class Participant
     #[ORM\JoinColumn(nullable: false)]
     private ?Campaign $campaign = null;
 
+    #[ORM\Column]
+    private ?bool $isHidden = null;
+
     public function __construct()
     {
         $this->payments = new ArrayCollection();
@@ -100,6 +103,18 @@ class Participant
     public function setCampaign(?Campaign $campaign): static
     {
         $this->campaign = $campaign;
+
+        return $this;
+    }
+
+    public function isIsHidden(): ?bool
+    {
+        return $this->isHidden;
+    }
+
+    public function setIsHidden(bool $isHidden): static
+    {
+        $this->isHidden = $isHidden;
 
         return $this;
     }

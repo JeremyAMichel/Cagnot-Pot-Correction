@@ -39,6 +39,9 @@ class Campaign
     #[ORM\Column]
     private ?int $totalCollected = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -156,6 +159,18 @@ class Campaign
     public function setTotalCollected(int $totalCollected): static
     {
         $this->totalCollected = $totalCollected;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): static
+    {
+        $this->name = $name;
 
         return $this;
     }

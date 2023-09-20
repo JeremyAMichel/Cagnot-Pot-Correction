@@ -1,10 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-<<<<<<< HEAD
-=======
-
->>>>>>> 2c55b8da18e5b93ac4fd1aaf1533b23478618220
 	<!--Import Google Icon Font-->
 	<link
 	href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -90,10 +86,15 @@
 						<textarea id="description" class="materialize-textarea" readonly="readonly">{{ campaign.content }}</textarea>
 					</div>
 					<div class="input-field col s12 l6">
-							Modifiez la campagne
-							<i class="material-icons right">edit</i>
-						</button>
-					</div>
+                        <input id="goal" type="number" readonly="readonly" value="{{ campaign.goal }}">
+                        <label for="goal">Objectif</label>
+                    </div>
+					<div class="col s12 l6 offset-l3">
+                        <button class="btn btn-large waves-effect waves-light col s12" type="submit" name="action">
+                            Modifiez la campagne
+                            <i class="material-icons right">edit</i>
+                        </button>
+                    </div>
 				</form>
 			</div>
 			<!-- List -->
